@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Easter Puzzle</title>
+
+		<style>
+			div { outline: 0px solid #FF0000;}
+
+			.headlineContainer
+			{
+				width: 500px;
+				height: 200px;
+				float: left;
+				border-radius: 10px;
+				border: 5px solid rgba(100, 100, 100, 0.5);
+				margin: 5px 0 0 5px;
+			}
+
+			.headline
+			{
+				width: 480px;
+				height: 180px;
+				padding: 20px;
+				/*background */
+			}
+
+			.headline h1
+			{
+				color: rgba(255, 255, 255, 1);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="floridamanApp">
+			<div class="headlineContainer" v-for="headline in headlines">
+				<div clas="headline" v-bind:style="getStyle(headline.image)">
+					<h1>{{headline.content}}</h1>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+		<script>
+			var app = new Vue
+			(
+				{
+					el: "#floridamanApp",
+					data:
+					{
+						headlines: [],
+						templates: [
+
+						],
+						nouns: [
+
+						],
+						nouns_plural: [
+
+						],
+						numbers: [
+
+						],
+						units: [
+
+						],
+						actions: [
+
+						],
+						actions_active: [
+
+						],
+						descriptors: [
+
+						]
+					},
+					methods:
+					{
+						makeHeadlines: function(qty)
+						{
+
+						},
+						getOne: function(arr)
+						{
+
+						}
+					},
+					created: function()
+					{
+						makeHeadlines(10);
+					}
+				}
+			);
+		</script>
+	</body>
+</html>
