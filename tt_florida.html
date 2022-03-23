@@ -40,7 +40,7 @@
 			</div>
 		</div>
 
-		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.min.js"></script>
 
 		<script>
 			var app = new Vue
@@ -51,44 +51,156 @@
 					{
 						headlines: [],
 						templates: [
-
+							"Florida Man #actions_plural1# #descriptors1# #descriptors2# #nouns1# for #numbers1# #units_time1#!",
+							"Florida Man #actions_past1# by #nouns1# for #actions_active1# #nouns2#!",
+							"Florida Man set to #actions1# #descriptors1# #descriptors2# #nouns1# in #numbers1# #units_time1#.",
+							"Florida Man #actions_plural1# #numbers1# #units1# of #nouns_plural1# for #descriptors1# #descriptors2# #nouns1#",
+							"Florida Man is #descriptors1# at #descriptors2# #descriptors3# situation.",
+							"Florida Man unable to #actions1# #nouns1# due to #descriptors1# #nouns2#.",
+							"Florida Man jailed for #actions_active1# #nouns1# and #actions_active2# #descriptors1# #nouns2#.",
+							"Florida Man wins lawsuit involving #numbers1# #units1# of #descriptors1# #nouns_plural1#."
 						],
 						nouns: [
-
+							"alligator",
+							"anteater",
+							"barmaid",
+							"clown",
+							"doorknob"
 						],
 						nouns_plural: [
-
+							"alligators",
+							"anteaters",
+							"barmaids",
+							"clowns",
+							"doorknobs"
 						],
 						numbers: [
-
+							"six",
+							"thirteen",
+							"twenty-three",
+							"fifty-nine"
 						],
 						units: [
-
+							"bags",
+							"crates",
+							"pounds",
+							"satchets"
+						],
+						units_time: [
+							"days",
+							"hours",
+							"minutes",
+							"weeks"
 						],
 						actions: [
-
+							"chase",
+							"beat",
+							"kill",
+							"marry",
+							"meet",
+							"proposition",
+							"question"
+						],
+						actions_past: [
+							"chased",
+							"beaten",
+							"killed",
+							"married",
+							"met",
+							"propositioned",
+							"questioned"
+						],
+						actions_plural: [
+							"chases",
+							"beats",
+							"kills",
+							"marries",
+							"meets",
+							"propositions",
+							"questions"
 						],
 						actions_active: [
-
+							"chasing",
+							"beating",
+							"killing",
+							"marrying",
+							"meeting",
+							"propositioning",
+							"questioning"
 						],
 						descriptors: [
-
+							"anxious",
+							"articulate",
+							"blind",
+							"bulky",
+							"chaste",
+							"cranky",
+							"dead",
+							"dramatic",
+							"enormous",
+							"epic",
+							"friendly",
+							"furious",
+							"generous",
+							"gorgeous",
+							"heavy",
+							"huge",
+							"impassive",
+							"irate"
 						]
 					},
 					methods:
 					{
 						makeHeadlines: function(qty)
 						{
+							for (var i = 0; i < qty; i++) 
+							{
+								this.headlines.push
+								(
+									{
+										"image" : "",
+										"content" : this.getContent(this.getOne(this.templates))
+									}
+								);
+							}
 
+							this.nouns1 = "testnoun21";
 						},
 						getOne: function(arr)
+						{
+							return arr[Math.floor((Math.random() * arr.length))];
+						},
+						getContent: function(template)
+						{
+							var content = template;
+							var prefixes = ["nouns", "nouns_plural", "numbers", "units", "units_time", "actions", "actions_plural", "actions_past", "actions_active", "descriptors"];
+ 
+							for (let i = 1; i <= 3; i++)
+							{
+								for (let j = 0; j < prefixes.length; j++)
+								{
+									if (content.indexOf("#" + prefixes[j] + i + "#") >= 0) content = this.getReplacedString(content, prefixes[j], i);
+								}
+							}
+
+							return content;
+						},
+						getReplacedString: function(content, stringType, index)
+						{
+							var newContent = content;
+
+							newContent = newContent.replace("#" + stringType + index + "#", this.getOne(this[stringType]));
+console.log(content, stringType, index, newContent)
+							return newContent;
+						},
+						getStyle: function()
 						{
 
 						}
 					},
 					created: function()
 					{
-						makeHeadlines(10);
+						this.makeHeadlines(6);
 					}
 				}
 			);
