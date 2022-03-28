@@ -14,13 +14,13 @@
 				border-radius: 10px;
 				border: 5px solid rgba(100, 100, 100, 0.5);
 				margin: 5px 0 0 5px;
+				padding: 20px;
 			}
 
 			.headline
 			{
 				width: 480px;
 				height: 180px;
-				padding: 20px;
 				/*background */
 			}
 
@@ -33,9 +33,15 @@
 
 	<body>
 		<div id="floridamanApp">
-			<div class="headlineContainer" v-for="headline in headlines">
-				<div clas="headline" v-bind:style="getStyle(headline.image)">
-					<h1>{{headline.content}}</h1>
+			<div class="headlineContainer" v-bind:style="">
+				<div clas="headline">
+					<h1>Florida Man {{ headlines[0]["actions_plural"][0] }} {{ headlines[0]["descriptors"][0] }} {{ headlines[0]["descriptors"][1] }} {{ headlines[0]["nouns"][0] }} for {{ headlines[0]["numbers"][0] }} {{ headlines[0]["units_time"][0] }}!</h1>
+				</div>
+			</div>
+
+			<div class="headlineContainer" v-bind:style="">
+				<div clas="headline">
+					<h1>Florida Man {{ headlines[1]["actions_past"][0] }} by {{ headlines[1]["nouns"][0] }}  for {{ headlines[1]["actions_active"][0] }} {{ headlines[1]["nouns"][1] }}!</h1>
 				</div>
 			</div>
 		</div>
@@ -49,9 +55,24 @@
 					el: "#floridamanApp",
 					data:
 					{
-						headlines: [],
-						templates: [
-							"Florida Man #actions_plural1# #descriptors1# #descriptors2# #nouns1# for #numbers1# #units_time1#!",
+						headlines: 
+						[
+							{
+								actions_plural: [""],
+								descriptors: ["", ""],
+								nouns: [""],
+								numbers: [""],
+								units_time: [""]
+							},
+							{
+								actions_past: [""],
+								nouns: ["", ""],
+								actions_active: [""]
+							}
+						],
+						templates: 
+						[
+							"Florida Man test_{{test}} #actions_plural1# #descriptors1# #descriptors2# #nouns1# for #numbers1# #units_time1#!",
 							"Florida Man #actions_past1# by #nouns1# for #actions_active1# #nouns2#!",
 							"Florida Man set to #actions1# #descriptors1# #descriptors2# #nouns1# in #numbers1# #units_time1#.",
 							"Florida Man #actions_plural1# #numbers1# #units1# of #nouns_plural1# for #descriptors1# #descriptors2# #nouns1#",
@@ -60,111 +81,148 @@
 							"Florida Man jailed for #actions_active1# #nouns1# and #actions_active2# #descriptors1# #nouns2#.",
 							"Florida Man wins lawsuit involving #numbers1# #units1# of #descriptors1# #nouns_plural1#."
 						],
-						nouns: [
-							"alligator",
-							"anteater",
-							"barmaid",
-							"clown",
-							"doorknob"
-						],
-						nouns_plural: [
-							"alligators",
-							"anteaters",
-							"barmaids",
-							"clowns",
-							"doorknobs"
-						],
-						numbers: [
-							"six",
-							"thirteen",
-							"twenty-three",
-							"fifty-nine"
-						],
-						units: [
-							"bags",
-							"crates",
-							"pounds",
-							"satchets"
-						],
-						units_time: [
-							"days",
-							"hours",
-							"minutes",
-							"weeks"
-						],
-						actions: [
-							"chase",
-							"beat",
-							"kill",
-							"marry",
-							"meet",
-							"proposition",
-							"question"
-						],
-						actions_past: [
-							"chased",
-							"beaten",
-							"killed",
-							"married",
-							"met",
-							"propositioned",
-							"questioned"
-						],
-						actions_plural: [
-							"chases",
-							"beats",
-							"kills",
-							"marries",
-							"meets",
-							"propositions",
-							"questions"
-						],
-						actions_active: [
-							"chasing",
-							"beating",
-							"killing",
-							"marrying",
-							"meeting",
-							"propositioning",
-							"questioning"
-						],
-						descriptors: [
-							"anxious",
-							"articulate",
-							"blind",
-							"bulky",
-							"chaste",
-							"cranky",
-							"dead",
-							"dramatic",
-							"enormous",
-							"epic",
-							"friendly",
-							"furious",
-							"generous",
-							"gorgeous",
-							"heavy",
-							"huge",
-							"impassive",
-							"irate"
-						]
+						wordTypes:
+						{	
+							nouns: 
+							[
+								"alligator",
+								"actor",
+								"barmaid",
+								"businessman",
+								"clown",
+								"cop",
+								"dragonfly",
+								"dwarf"
+							],
+							nouns_plural: 
+							[
+								"alligators",
+								"actors",
+								"barmaids",
+								"businessmen",
+								"clowns",
+								"cops",
+								"dragonflies",
+								"dwarves"
+							],
+							numbers: 
+							[
+								"six",
+								"thirteen",
+								"twenty-three",
+								"fifty-nine"
+							],
+							units: 
+							[
+								"bags",
+								"crates",
+								"pounds",
+								"satchets",
+								"trunks"
+							],
+							units_time: 
+							[
+								"days",
+								"hours",
+								"minutes",
+								"weeks"
+							],
+							actions: 
+							[
+								"chase",
+								"beat",
+								"kill",
+								"marry",
+								"meet",
+								"proposition",
+								"question"
+							],
+							actions_past: 
+							[
+								"chased",
+								"beaten",
+								"killed",
+								"married",
+								"met",
+								"propositioned",
+								"questioned"
+							],
+							actions_plural: 
+							[
+								"chases",
+								"beats",
+								"kills",
+								"marries",
+								"meets",
+								"propositions",
+								"questions"
+							],
+							actions_active: 
+							[
+								"chasing",
+								"beating",
+								"killing",
+								"marrying",
+								"meeting",
+								"propositioning",
+								"questioning"
+							],
+							descriptors: 
+							[
+								"anxious",
+								"articulate",
+								"blind",
+								"bulky",
+								"chaste",
+								"cranky",
+								"dead",
+								"dramatic",
+								"enormous",
+								"epic",
+								"friendly",
+								"furious",
+								"generous",
+								"gorgeous",
+								"heavy",
+								"huge",
+								"impassive",
+								"irate",
+								"jovial",
+								"jumpy",
+								"kleptomaniac",
+								"knowledgeable",
+								"limber",
+								"lurid",
+								"monstrous",
+								"mysterious"
+							]
+						}
 					},
 					methods:
 					{
-						makeHeadlines: function(qty)
+						fillHeadlineArrays: function(headlineIndex)
 						{
-							for (var i = 0; i < qty; i++) 
-							{
-								this.headlines.push
-								(
-									{
-										"image" : "",
-										"content" : this.getContent(this.getOne(this.templates))
-									}
-								);
-							}
+							var keys = Object.keys(this.wordTypes);
 
-							this.nouns1 = "testnoun21";
+							keys.forEach(
+								(wordTypeIndex) => 
+								{
+									if (this.headlines[headlineIndex][wordTypeIndex])
+									{
+										for (let i = 0; i < this.headlines[headlineIndex][wordTypeIndex].length; i++)
+										{
+											var newWord = this.getOne(this.wordTypes[wordTypeIndex]);
+
+											while (this.headlines[headlineIndex][wordTypeIndex].indexOf(newWord) != -1)
+											{
+												newWord = this.getOne(this.wordTypes[wordTypeIndex]);
+											}
+
+											this.headlines[headlineIndex][wordTypeIndex][i] = newWord;
+										}
+									}
+								}
+							);														
 						},
 						getOne: function(arr)
 						{
@@ -185,14 +243,6 @@
 
 							return content;
 						},
-						getReplacedString: function(content, stringType, index)
-						{
-							var newContent = content;
-
-							newContent = newContent.replace("#" + stringType + index + "#", this.getOne(this[stringType]));
-console.log(content, stringType, index, newContent)
-							return newContent;
-						},
 						getStyle: function()
 						{
 
@@ -200,7 +250,10 @@ console.log(content, stringType, index, newContent)
 					},
 					created: function()
 					{
-						this.makeHeadlines(6);
+						for (let i = 0; i < this.headlines.length; i++)
+						{
+							this.fillHeadlineArrays(i);
+						}
 					}
 				}
 			);
