@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Easter Puzzle</title>
+		<title>FLorida Man</title>
 
 		<style>
 			div { outline: 0px solid #FF0000;}
@@ -15,33 +15,73 @@
 				border: 5px solid rgba(100, 100, 100, 0.5);
 				margin: 5px 0 0 5px;
 				padding: 20px;
+				filter: grayscale(100%);
+				background-size: cover;
 			}
 
 			.headline
 			{
 				width: 480px;
 				height: 180px;
-				/*background */
 			}
 
 			.headline h1
 			{
+				text-transform: capitalize;
+				text-align: center;
 				color: rgba(255, 255, 255, 1);
+				text-shadow: 1px -1px 0 rgba(0, 0, 0, 1), -1px 1px 0 rgba(0, 0, 0, 1), -1px -1px 0 rgba(0, 0, 0, 1), 1px 1px 0 rgba(0, 0, 0, 1);
 			}
 		</style>
 	</head>
 
 	<body>
 		<div id="floridamanApp">
-			<div class="headlineContainer" v-bind:style="">
-				<div clas="headline">
+			<div class="headlineContainer" v-bind:style="getStyle(0)">
+				<div class="headline">
 					<h1>Florida Man {{ headlines[0]["actions_plural"][0] }} {{ headlines[0]["descriptors"][0] }} {{ headlines[0]["descriptors"][1] }} {{ headlines[0]["nouns"][0] }} for {{ headlines[0]["numbers"][0] }} {{ headlines[0]["units_time"][0] }}!</h1>
 				</div>
 			</div>
 
-			<div class="headlineContainer" v-bind:style="">
-				<div clas="headline">
+			<div class="headlineContainer" v-bind:style="getStyle(1)">
+				<div class="headline">
 					<h1>Florida Man {{ headlines[1]["actions_past"][0] }} by {{ headlines[1]["nouns"][0] }}  for {{ headlines[1]["actions_active"][0] }} {{ headlines[1]["nouns"][1] }}!</h1>
+				</div>
+			</div>
+
+			<div class="headlineContainer" v-bind:style="getStyle(2)">
+				<div class="headline">
+					<h1>Florida Man set to {{ headlines[2]["actions"][0] }} {{ headlines[2]["descriptors"][0] }} {{ headlines[2]["descriptors"][1] }} {{ headlines[2]["nouns"][0] }} in {{ headlines[2]["numbers"][0] }} {{ headlines[2]["units_time"][0] }}.</h1>
+				</div>
+			</div>
+
+			<div class="headlineContainer" v-bind:style="getStyle(3)">
+				<div class="headline">
+					<h1>Florida Man {{ headlines[3]["actions_plural"][0] }} {{ headlines[3]["numbers"][0] }} {{ headlines[3]["units"][0] }} of {{ headlines[3]["nouns_plural"][0] }} for {{ headlines[3]["descriptors"][0] }} {{ headlines[3]["descriptors"][1] }} {{ headlines[3]["nouns"][0] }}.</h1>
+				</div>
+			</div>
+
+			<div class="headlineContainer" v-bind:style="getStyle(4)">
+				<div class="headline">
+					<h1>Florida Man is {{ headlines[4]["descriptors"][0] }} at {{ headlines[4]["descriptors"][1] }} {{ headlines[4]["descriptors"][2] }} situation involving {{ headlines[4]["descriptors"][3] }} {{ headlines[4]["nouns_plural"][0] }} and {{ headlines[4]["descriptors"][4] }} {{ headlines[4]["nouns_plural"][1] }}.</h1>
+				</div>
+			</div>
+
+			<div class="headlineContainer" v-bind:style="getStyle(5)">
+				<div class="headline">
+					<h1>Florida Man unable to {{ headlines[5]["actions"][0] }} {{ headlines[5]["nouns"][0] }} due to {{ headlines[5]["descriptors"][0] }} {{ headlines[5]["nouns_plural"][0] }}.</h1>
+				</div>
+			</div>
+
+			<div class="headlineContainer" v-bind:style="getStyle(6)">
+				<div class="headline">
+					<h1>Florida Man jailed for {{ headlines[6]["actions_active"][0] }} {{ headlines[6]["nouns_plural"][0] }} and {{ headlines[6]["actions_active"][1] }} {{ headlines[6]["descriptors"][0] }} {{ headlines[6]["nouns"][0] }}.</h1>
+				</div>
+			</div>
+
+			<div class="headlineContainer" v-bind:style="getStyle(7)">
+				<div class="headline">
+					<h1>Florida Man wins {{ headlines[7]["descriptors"][0] }} contest against {{ headlines[7]["numbers"][0] }} {{ headlines[7]["units"][0] }} of {{ headlines[7]["descriptors"][1] }} {{ headlines[7]["nouns_plural"][0] }}.</h1>
 				</div>
 			</div>
 		</div>
@@ -68,49 +108,80 @@
 								actions_past: [""],
 								nouns: ["", ""],
 								actions_active: [""]
-							}
-						],
-						templates: 
-						[
-							"Florida Man test_{{test}} #actions_plural1# #descriptors1# #descriptors2# #nouns1# for #numbers1# #units_time1#!",
-							"Florida Man #actions_past1# by #nouns1# for #actions_active1# #nouns2#!",
-							"Florida Man set to #actions1# #descriptors1# #descriptors2# #nouns1# in #numbers1# #units_time1#.",
-							"Florida Man #actions_plural1# #numbers1# #units1# of #nouns_plural1# for #descriptors1# #descriptors2# #nouns1#",
-							"Florida Man is #descriptors1# at #descriptors2# #descriptors3# situation.",
-							"Florida Man unable to #actions1# #nouns1# due to #descriptors1# #nouns2#.",
-							"Florida Man jailed for #actions_active1# #nouns1# and #actions_active2# #descriptors1# #nouns2#.",
-							"Florida Man wins lawsuit involving #numbers1# #units1# of #descriptors1# #nouns_plural1#."
+							},
+							{
+								actions: [""],
+								descriptors: ["", ""],
+								nouns: [""],
+								numbers: [""],
+								units_time: [""]
+							},
+							{
+								actions_plural: [""],
+								numbers: [""],
+								units: [""],
+								nouns_plural: [""],
+								descriptors: ["", ""],
+								nouns: [""]
+							},
+							{
+								descriptors: ["", "", "", "", ""],
+								nouns_plural: ["", ""]
+							},
+							{
+								actions: [""],
+								nouns: [""],
+								descriptors: [""],
+								nouns_plural: [""]
+							},
+							{
+								actions_active: ["", ""],
+								nouns: [""],
+								descriptors: [""],
+								nouns_plural: [""]
+							},
+							{
+								numbers: [""],
+								units: [""],
+								nouns_plural: [""],
+								descriptors: ["", ""]
+							},
 						],
 						wordTypes:
 						{	
 							nouns: 
 							[
 								"alligator",
-								"actor",
-								"barmaid",
 								"businessman",
-								"clown",
 								"cop",
 								"dragonfly",
-								"dwarf"
+								"ewe",
+								"florist",
+								"girl",
+								"hamster",
+								"iguana",
+								"joker"
 							],
 							nouns_plural: 
 							[
 								"alligators",
-								"actors",
-								"barmaids",
 								"businessmen",
-								"clowns",
 								"cops",
 								"dragonflies",
-								"dwarves"
+								"ewes",
+								"florists",
+								"girls",
+								"hamsters"
 							],
 							numbers: 
 							[
+								"three",
 								"six",
 								"thirteen",
+								"nineteen",
 								"twenty-three",
-								"fifty-nine"
+								"fifty-nine",
+								"eighty-seven"
 							],
 							units: 
 							[
@@ -129,41 +200,41 @@
 							],
 							actions: 
 							[
+								"antangonize",
+								"brutalize",
 								"chase",
-								"beat",
 								"kill",
 								"marry",
-								"meet",
 								"proposition",
 								"question"
 							],
 							actions_past: 
 							[
+								"antangonized",
+								"brutalized",
 								"chased",
-								"beaten",
 								"killed",
 								"married",
-								"met",
 								"propositioned",
 								"questioned"
 							],
 							actions_plural: 
 							[
+								"antangonizes",
+								"brutalizes",
 								"chases",
-								"beats",
 								"kills",
 								"marries",
-								"meets",
 								"propositions",
 								"questions"
 							],
 							actions_active: 
 							[
+								"antangonizing",
+								"brutalizing",
 								"chasing",
-								"beating",
 								"killing",
 								"marrying",
-								"meeting",
 								"propositioning",
 								"questioning"
 							],
@@ -189,10 +260,10 @@
 								"irate",
 								"jovial",
 								"jumpy",
-								"kleptomaniac",
+								"kind",
 								"knowledgeable",
-								"limber",
-								"lurid",
+								"lascivious",
+								"livid",
 								"monstrous",
 								"mysterious"
 							]
@@ -228,24 +299,35 @@
 						{
 							return arr[Math.floor((Math.random() * arr.length))];
 						},
-						getContent: function(template)
+						getStyle: function(headlineIndex)
 						{
-							var content = template;
-							var prefixes = ["nouns", "nouns_plural", "numbers", "units", "units_time", "actions", "actions_plural", "actions_past", "actions_active", "descriptors"];
- 
-							for (let i = 1; i <= 3; i++)
-							{
-								for (let j = 0; j < prefixes.length; j++)
+							var keys = Object.keys(this.wordTypes);
+							var images = this.wordTypes.nouns;
+							var arr = ["floridaman"];
+
+							keys.forEach(
+								(wordTypeIndex) => 
 								{
-									if (content.indexOf("#" + prefixes[j] + i + "#") >= 0) content = this.getReplacedString(content, prefixes[j], i);
+									if (this.headlines[headlineIndex][wordTypeIndex])
+									{
+										images.forEach(
+											(img) =>
+											{
+												if (this.headlines[headlineIndex][wordTypeIndex].indexOf(img) != -1) arr.push(img);
+											}
+										)
+									}
 								}
+							);
+
+							if (arr.length == 0)
+							{
+								return "";
 							}
-
-							return content;
-						},
-						getStyle: function()
-						{
-
+							else
+							{
+								return "background: url(" + this.getOne(arr) + ".jpg)";
+							}
 						}
 					},
 					created: function()
