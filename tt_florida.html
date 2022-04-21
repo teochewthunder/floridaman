@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>FLorida Man</title>
+		<title>Florida Man</title>
 
 		<style>
-			div { outline: 0px solid #FF0000;}
-
 			.headlineContainer
 			{
 				width: 500px;
@@ -14,15 +12,17 @@
 				border-radius: 10px;
 				border: 5px solid rgba(100, 100, 100, 1);
 				margin: 5px 0 0 5px;
-				padding: 20px;
 				filter: grayscale(100%);
 				background-size: cover;
+				overflow: hidden;
 			}
 
 			.headline
 			{
-				width: 480px;
-				height: 180px;
+				width: 100%;
+				height: 100%;
+				float: left;
+				background-color: rgba(0, 0, 0, 0.5);
 			}
 
 			.headline h1
@@ -31,6 +31,8 @@
 				text-align: center;
 				color: rgba(255, 255, 255, 1);
 				text-shadow: 1px -1px 0 rgba(0, 0, 0, 1), -1px 1px 0 rgba(0, 0, 0, 1), -1px -1px 0 rgba(0, 0, 0, 1), 1px 1px 0 rgba(0, 0, 0, 1);
+				padding: 10px;
+				width: 480px;
 			}
 		</style>
 	</head>
@@ -45,7 +47,7 @@
 
 			<div class="headlineContainer" v-bind:style="getStyle(1)">
 				<div class="headline">
-					<h1>Florida Man {{ headlines[1]["actions_past"][0] }} by {{ headlines[1]["nouns"][0] }}  for {{ headlines[1]["actions_active"][0] }} {{ headlines[1]["nouns"][1] }}!</h1>
+					<h1>Florida Man {{ headlines[1]["actions_past"][0] }} by {{ headlines[1]["nouns"][0] }} for {{ headlines[1]["actions_active"][0] }} {{ headlines[1]["nouns"][1] }}!</h1>
 				</div>
 			</div>
 
@@ -145,7 +147,7 @@
 								units: [""],
 								nouns_plural: [""],
 								descriptors: ["", ""]
-							},
+							}
 						],
 						wordTypes:
 						{	
@@ -278,20 +280,20 @@
 							var keys = Object.keys(this.wordTypes);
 
 							keys.forEach(
-								(wordTypeIndex) => 
+								(wordType) => 
 								{
-									if (this.headlines[headlineIndex][wordTypeIndex])
+									if (this.headlines[headlineIndex][wordType])
 									{
-										for (let i = 0; i < this.headlines[headlineIndex][wordTypeIndex].length; i++)
+										for (let i = 0; i < this.headlines[headlineIndex][wordType].length; i++)
 										{
-											var newWord = this.getOne(this.wordTypes[wordTypeIndex]);
+											var newWord = this.getOne(this.wordTypes[wordType]);
 
-											while (this.headlines[headlineIndex][wordTypeIndex].indexOf(newWord) != -1)
+											while (this.headlines[headlineIndex][wordType].indexOf(newWord) != -1)
 											{
-												newWord = this.getOne(this.wordTypes[wordTypeIndex]);
+												newWord = this.getOne(this.wordTypes[wordType]);
 											}
 
-											this.headlines[headlineIndex][wordTypeIndex][i] = newWord;
+											this.headlines[headlineIndex][wordType][i] = newWord;
 										}
 									}
 								}
@@ -304,19 +306,19 @@
 						getStyle: function(headlineIndex)
 						{
 							var keys = Object.keys(this.wordTypes);
-							var images = ["alligator", "businessman", "cop", "dragonfly", "ewe", "florist", "girl", "hamster", "iguana", "joker", "alligators", "girls", "hamsters"];
+							var images = ["alligator", "businessman", "cop", "dragonfly", "ewe", "florist", "girl", "hamster", "iguana", "joker", "alligators", "cops", "girls", "hamsters"];
 
 							var arr = ["floridaman"];
 
 							keys.forEach(
-								(wordTypeIndex) => 
+								(wordType) => 
 								{
-									if (this.headlines[headlineIndex][wordTypeIndex])
+									if (this.headlines[headlineIndex][wordType])
 									{
 										images.forEach(
 											(img) =>
 											{
-												if (this.headlines[headlineIndex][wordTypeIndex].indexOf(img) != -1) arr.push(img);
+												if (this.headlines[headlineIndex][wordType].indexOf(img) != -1) arr.push(img);
 											}
 										)
 									}
