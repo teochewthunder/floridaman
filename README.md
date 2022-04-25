@@ -16,7 +16,7 @@ This basically generates a series of 8 headlines with randomized wordings.
 - Each image is a possible background image depending on the words used in the headline.
 - The default image used is `floriaman.jpg`.
 
-## JavaScript (TBC)
+## JavaScript 
 - `data`:
  - `headlines`: An array of objects. Each object has properties that are arrays consisting of one or more empty strings. These empty strings are used as placeholders, to be replaced by a random value later on.
  - `wordTypes`: An array of arrays. Each array has a key, and contains strings. These strings are words that will be picked from.
